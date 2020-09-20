@@ -1,13 +1,15 @@
 import _ from 'lodash'
+import { ADD_TO_CART, REMOVE_FROM_CART, SUBMIT_CART_FAILURE, SUBMIT_CART_SUCCESS } from "../actions/types";
 
 const initCart = {
   items: {},
-  total: 0
+  total: 0,
+  error: null
 };
 
 const cartReducer = (state = initCart, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
+    case ADD_TO_CART:
 
       let addedItem = action.item;
       let addedQty = parseInt(action.quantity);
@@ -36,7 +38,7 @@ const cartReducer = (state = initCart, action) => {
         total: newTotal
       }
     
-    case "REMOVE_FROM_CART":
+    case REMOVE_FROM_CART:
       let itemToBeRemoved = state.items[action.id];
       if (!_.isEmpty(itemToBeRemoved)) {
         let newTotal = state.total - itemToBeRemoved.itemTotal;
@@ -48,6 +50,20 @@ const cartReducer = (state = initCart, action) => {
         }
       }
       return state;
+
+    case SUBMIT_CART_SUCCESS:
+      return {
+        ...state,
+        items: {},
+        total: 0,
+        error: null
+      };
+    
+    case SUBMIT_CART_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      }
 
     default:
       return state;

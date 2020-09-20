@@ -34,28 +34,36 @@ export class Product extends Component {
           </div>
           <div className="card-action">
             <div className="row">
-              <div className="input-field col s6">
-                <select className="browser-default" onChange={this.handleQuantityChange}>
-                  <option defaultValue="0">
-                    Quantity
-                  </option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-              <div className="input-field col s6">
-                <button
-                  className="btn waves-effect waves-light"
-                  type="submit"
-                  name="action"
-                  onClick={() => addToCart(product, this.state.quantity)}
-                >
-                  Add to Cart
-                </button>
-              </div>
+              { product.inCart ?
+                (
+                  <span className="card-title center-align">Added to Cart</span>
+                ) : ( 
+                <div>
+                  <div className="input-field col s6">
+                    <select className="browser-default" onChange={this.handleQuantityChange}>
+                      <option defaultValue="0">
+                        Quantity
+                      </option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <div className="input-field col s6">
+                    <button
+                      className="btn waves-effect waves-light"
+                      type="submit"
+                      name="action"
+                      onClick={() => addToCart(product, this.state.quantity)}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+                )
+              }
             </div>
           </div>
         </div>

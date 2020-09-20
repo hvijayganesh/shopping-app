@@ -6,7 +6,7 @@ import orderReducer from './orderReducer';
 const rootReducer = combineReducers({
   products: productReducer,
   cart: cartReducer,
-  orders: orderReducer
+  orderInfo: orderReducer
 })
 
 export default rootReducer
