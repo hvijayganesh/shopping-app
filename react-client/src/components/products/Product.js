@@ -1,34 +1,67 @@
-import React from 'react'
+import React, { Component } from "react";
 
-function Product(props) {
-  const product = props.product;
+export class Product extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quantity: 0,
+    };
+  }
 
-  return (
-    <div className="col-9 mx-auto col-md-6 col-lg-4  my-3">
-      <div className="card" key={product.id}>
-        <div className="img-container p-5">
-          <img src={product.img} alt={product.title} className="card-img-top"></img>
+  handleQuantityChange = (e) => {
+    this.setState({
+      quantity: e.target.value,
+    });
+  };
+
+  render() {
+    let { product, addToCart } = this.props;
+
+    return (
+      // <div className="col-9 mx-auto col-md-6 col-lg-4  my-3">
+      <div className="col m6 l4 mx-auto my-3">
+        <div className="card">
+          <div className="card-image">
+            <img
+              src={product.img}
+              alt={product.title}
+              className="card-img-top"
+            ></img>
+          </div>
           <div className="card-content center">
             <span className="card-title">{product.title}</span>
-            <h5 class="mt-3">${product.price}</h5>
-            <div class="input-group mt-3">
-              <select class="custom-select" id="inputGroupSelect04">
-                <option selected>Quantity</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Add</button>
+            <h5 className="mt-3">${product.price}</h5>
+          </div>
+          <div className="card-action">
+            <div className="row">
+              <div className="input-field col s6">
+                <select className="browser-default" onChange={this.handleQuantityChange}>
+                  <option defaultValue="0">
+                    Quantity
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div className="input-field col s6">
+                <button
+                  className="btn waves-effect waves-light"
+                  type="submit"
+                  name="action"
+                  onClick={() => addToCart(product, this.state.quantity)}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    );
+  }
 }
 
-export default Product
+export default Product;

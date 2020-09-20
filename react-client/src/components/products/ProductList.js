@@ -1,35 +1,42 @@
 import React, { Component } from 'react'
-import { storeProducts } from '../../test-data/data'
 import Product from './Product'
+import { connect } from 'react-redux'
+import _ from 'lodash';
+import { addToCart } from '../../actions/cartActions';
 
 export class ProductList extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: storeProducts
-    };
-  }
-
   render() {
-    const productList = this.state.products.length > 0 ? 
-      this.state.products.map((product) => {
+    const { products, addToCart } = this.props;
+
+    const productList = !_.isEmpty(products) ? 
+      products.map((product) => {
         return (
-          <Product product={product} />
+          <Product key={product.id}  product={product} addToCart={addToCart} />
         )
       }) : 
-      <p>No products are available for sale, please come again later!</p>
+      <h5 className="center-align mt-5">No products are available for sale, please come again later!</h5>
 
     return (
-       
-            <div className="row">
-              {/* <div className="col s12 m12 pr-0"> */}
-                {productList}
-              {/* </div> */}
-            </div>
-
+      <div className="row">
+        <h3 className="center-align">Products for Sale</h3><hr></hr>
+        {productList}
+      </div>
     )
   }
 }
 
-export default ProductList
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    products: state.products
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (item, quantity) => { dispatch(addToCart(item, quantity)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
