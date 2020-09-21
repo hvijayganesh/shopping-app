@@ -59,7 +59,7 @@ export class Product extends Component {
                   </div>
                   <div className="input-field col s6">
                     <button
-                      className="btn waves-effect waves-light"
+                      className="btn orange waves-effect waves-light"
                       type="submit"
                       name="action"
                       onClick={() => addToCart(product, this.state.quantity)}
