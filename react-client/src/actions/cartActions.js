@@ -1,9 +1,9 @@
 import { createFakeOrder } from "../test-data/data";
-import { SUBMIT_CART_SUCCESS, SUBMIT_CART_FAILURE } from "./types";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUBMIT_CART_SUCCESS, SUBMIT_CART_FAILURE } from "./types";
 
 export const addToCart = (item, quantity)=>{
   return {
-    type: "ADD_TO_CART",
+    type: ADD_TO_CART,
     item,
     quantity
   }
@@ -11,7 +11,7 @@ export const addToCart = (item, quantity)=>{
 
 export const removeFromCart = (id) => {
   return {
-    type: "REMOVE_FROM_CART",
+    type: REMOVE_FROM_CART,
     id
   }
 }

@@ -11,6 +11,11 @@
 
 ## Run Locally
 
+### Supported node version
+```
+node 12 and above
+```
+
 ### 1. Clone repo
 
 ```
@@ -19,9 +24,15 @@ $ cd shopping-app
 $ cd react-client
 ```
 
-### 3. Run Frontend
+### 2. Run Frontend
 
 ```
 $ npm install
 $ npm start
+```
+
+### Run tests
+
+```
+$ npm test
 ```

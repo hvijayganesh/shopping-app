@@ -17,13 +17,10 @@ const cartReducer = (state = initCart, action) => {
       if (addedQty == 0)
         return state;
 
-      // compute new total
-      let newTotal = state.total + (addedItem.price * addedQty);
-
       // update quantity in cart
       let existingItem = state.items[addedItem.id];
       if (existingItem) {
-        existingItem.quantity += addedQty;
+        existingItem.quantity = addedQty;
         existingItem.itemTotal = existingItem.quantity * existingItem.price;
       } else {
         state.items[addedItem.id] = {
@@ -32,6 +29,11 @@ const cartReducer = (state = initCart, action) => {
           itemTotal: addedQty * addedItem.price
         }
       }
+
+      // compute new total
+      let newTotal = 0;
+      console.log('items', state.items)
+      _.map(state.items, (item, id) => newTotal += item.itemTotal);
 
       return {
         ...state,
