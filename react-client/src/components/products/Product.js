@@ -36,7 +36,13 @@ export class Product extends Component {
             <div className="row">
               { product.inCart ?
                 (
-                  <span className="card-title center-align">Added to Cart</span>
+                  <div className="input-field col s12 center-align pad-5">
+                    <span
+                      className="btn"
+                    >
+                      Added to Cart
+                    </span>
+                  </div>
                 ) : ( 
                 <div>
                   <div className="input-field col s6">

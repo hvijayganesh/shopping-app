@@ -18,7 +18,7 @@ export const removeFromCart = (id) => {
 
 export const submitCart = (cart) => async (dispatch) => {
   try {
-    // const orders = await axios.get(`http://localhost:5000/submit-cart`) // if backend is available
+    // const orders = await axios.post(`http://localhost:5000/submit-cart`) // if backend is available
 
     // createFakeOrder randomly fails to simulate out of stock issue
     const order = createFakeOrder(cart);

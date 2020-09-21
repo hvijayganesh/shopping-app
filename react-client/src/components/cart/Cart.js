@@ -15,7 +15,7 @@ export class Cart extends Component {
   render() {
     const { cart, addToCart, removeFromCart, newOrder } = this.props;
 
-    if (!_.isEmpty(newOrder)) return (<Redirect to={{ pathname: "/order-confirmation", newOrder: newOrder}}/>);
+    if (!_.isEmpty(newOrder) && _.isEmpty(cart.items)) return (<Redirect to={{ pathname: "/order-confirmation", newOrder: newOrder}}/>);
 
     const cartItems = !_.isEmpty(cart.items) ? 
       _.map(cart.items, (item, id) => {

@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { GET_ORDERS_SUCCESS, GET_ORDERS_ERROR, SORT_ORDERS, SUBMIT_CART_SUCCESS, SUBMIT_CART_FAILURE } from "../actions/types";
+import { GET_ORDERS_SUCCESS, GET_ORDERS_ERROR, SORT_ORDERS, SUBMIT_CART_SUCCESS } from "../actions/types";
 
 const initState = {
   pastOrders: [],
@@ -22,7 +22,6 @@ const orderReducer = (state = initState, action) => {
         pastOrders: []
       }
     case SORT_ORDERS:
-      console.log('sort_orders')
       // option: createdDate-desc -> sortOption will be createdDate and sortOrder will be desc
       const [sortOption, sortOrder] = action.option.split('-');
 

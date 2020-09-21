@@ -3,6 +3,7 @@ import Product from './Product'
 import { connect } from 'react-redux'
 import _ from 'lodash';
 import { addToCart } from '../../actions/cartActions';
+import { getProducts } from '../../actions/productActions';
 
 export class ProductList extends Component {
 
@@ -34,7 +35,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (item, quantity) => { dispatch(addToCart(item, quantity)) }
+    addToCart: (item, quantity) => { dispatch(addToCart(item, quantity)) },
+    getProducts: () => { dispatch(getProducts()) }
   }
 }
 
