@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
-        <Link to='/' className="brand-logo">PayPal Shopping</Link>
+        <Link to='/' className="brand-logo">Shopping Portal</Link>
         <ul className="right">
           <li><NavLink to='/cart'>Cart</NavLink></li>
           <li><NavLink to='/my-orders'>My Orders</NavLink></li>

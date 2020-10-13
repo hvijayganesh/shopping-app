@@ -1,8 +1,23 @@
 # Shopping Portal
 
+## Requirement
+
+- Shopping catalogue page that provides list of all products available
+- Provide ability to add products to cart
+  - User could add multiple quantities of a product to cart.
+  - The cart has to be managed on client side until user checks out.
+- Shopping cart and checkout
+  - On shopping cart page user could see all products that are added to cart along with total price.
+  - Cart page provides a button to checkout the whole cart. Assume there is Web service that would take care of placing order and excepting payment
+  - Order could be successfully placed and user sees order confirmation page.
+  - Error scenario - Web service could return error that some products are not available any more. Show error message at the top of cart page in red color.
+- Provide a screen to see their past orders
+  - Assume there is a Web service could provide list of past orders
+  - Provide ability to sort orders based on Order Date and Amount, sorting has to be done locally at client end.
+
 ## Design and Assumptions
 
-- Only React-Redux front-end is written and as mentioned in the question, assumed we have a backend web-services
+- Only React-Redux front-end is written, assumed we have a backend web-services
 - Data to be returned by webservice are mocked and maintained in client-side
 - For OutOfStock scenario, createFakeOrder function will randomly throw error during checkout. 50-50 probability for success-failure scenarios
 - Used dropdown for quantity increase and decrease in productList and cart
